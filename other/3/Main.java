@@ -16,6 +16,9 @@ class Book{
     float price;
     int num_pages;
 
+    Book(){
+    }
+
     Book(String n, String a, float p, int np){
         name = n;
         author = a;
@@ -23,7 +26,7 @@ class Book{
         num_pages = np;
     }
 
-    void setDetails(String n, String a, float p, int pn){
+    void setDetails(){
         Scanner J = new Scanner(System.in);
 
         System.out.print("Enter the name of the book : ");
@@ -37,15 +40,26 @@ class Book{
         num_pages = J.nextInt();
     }
 
-    void toString(){
-        System.out.println("Name : " + name + "\nAuthor : " + author + "\nPrice : " + price + "\nNumber of pages : " _ num_pages);
+    public String toString(){
+        return ("Name : " + name + "\nAuthor : " + author + "\nPrice : " + price + "\nNumber of pages : " +   num_pages);
     }
 
 }
 
 class Main{
     public static void main(String argv[]){
-        Book bookarray[] = new 
+	Scanner J = new Scanner(System.in);
+	int n = J.nextInt();	
+        Book bookarray[] = new Book[n];
+
+	for(int i = 0; i < n; i++){
+		bookarray[i] = new Book();
+		bookarray[i].setDetails();
+	}
+
+	for(Book instance : bookarray){
+		System.out.println(instance);
+	}
 
     }
 
