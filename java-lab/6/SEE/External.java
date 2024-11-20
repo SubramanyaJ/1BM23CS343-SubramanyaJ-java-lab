@@ -10,38 +10,30 @@
 	the final marks of n students in all five courses.
 */
 
-package CIE;
+package SEE;
 import java.util.Scanner;
+import CIE.Student;
 
-class Student{
-	String USN;
-	String name;
-	String sem;
+public class External extends Student{
+	public double SEEmarksArray[];
 
-	Student(){
-		;
+	public External(){
+		SEEmarksArray = new double[5];
 	}
 
-	void getData(){
+	public void getData(Student parent){
+		manualInherit(parent);
 		Scanner J = new Scanner(System.in);
-		System.out.println("Enter your USN, name, and semester details : ");
-		USN = J.nextLine();
-		name = J.nextLine();
-		sem = J.nextLine();	
-	}
-
-}
-
-class Internals extends Student{
-	double[] CIEmarksArray;
-
-	void getMarks(){
-		Scanner J = new Scanner(System.in);
-		CIEmarksArray = new double[5];
-		System.out.println("Enter the 5 marks scored in internals : ");
+		System.out.println("Enter the SEE marks : ");
 		for(int i = 0; i < 5; i++){
-			CIEmarksArray[i] = J.nextDouble();
+			SEEmarksArray[i] = J.nextDouble();
 		}
-
 	}
+
+	public void manualInherit(Student parent){
+		this.USN = parent.USN;
+		this.name = parent.name;
+		this.sem = parent.sem;
+	}
+
 }

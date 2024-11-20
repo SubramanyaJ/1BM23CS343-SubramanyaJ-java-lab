@@ -10,9 +10,45 @@
 	the final marks of n students in all five courses.
 */
 
-package SEE;
-import packages.CIE;
+import CIE.*;
+import SEE.*;
+import java.util.Scanner;
+class Main{
 
-class External extends Student{
-	int[] SEEmarksArray;
+	public static void main(String argv[]){
+
+		System.out.println("Enter the number of students");
+		Scanner J = new Scanner(System.in);
+
+		int n = J.nextInt();
+		Student[] sa = new Student[n];
+		Internals[] ia = new Internals[n];
+		External[] ea = new External[n];
+
+
+		for(int i = 0; i < n; i++){
+
+			sa[i] = new Student();
+			ia[i] = new Internals();
+			ea[i] = new External();
+
+			sa[i].getData();
+			ia[i].getMarks(sa[i]);
+			ea[i].getData(sa[i]);
+		
+			
+		
+			double[] temp = new double[5];
+			// Temporary marks display
+			System.out.println("The final marks in each subject are :");
+			for(int j = 0; j < 5; j++){
+				temp[j] = ia[i].CIEmarksArray[j] + ea[i].SEEmarksArray[j]*0.5;
+				System.out.print(temp[j] + " ");
+			}
+		}
+	
+
+		
+	}
+
 }

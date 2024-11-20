@@ -10,9 +10,25 @@
 	the final marks of n students in all five courses.
 */
 
-package SEE;
-import packages.CIE;
+package CIE;					// Package CIE
+import java.util.Scanner;
 
-class External extends Student{
-	int[] SEEmarksArray;
+public class Student{					// Class Student
+	public String USN;
+	public String name;
+	public String sem;
+
+	public Student(){
+		;
+	}
+
+	public void getData(){
+		Scanner J = new Scanner(System.in);
+		System.out.println("Enter your USN, name, and semester details : ");
+		USN = J.nextLine();
+		name = J.nextLine();
+		sem = J.nextLine();
+	}
+
 }
+
