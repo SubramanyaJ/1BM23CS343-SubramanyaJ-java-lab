@@ -8,13 +8,15 @@
     exception if son’s age is >=father’s age.
 */
 
+import java.util.Scanner;
+
 class WrongAge extends Exception{
     WrongAge(){
         ;
     }
 
     public String toString(){
-        return "Age cannot be less than zero!";
+        return "Father's age cannot be less than zero!";
     }
 }
 
@@ -47,7 +49,7 @@ class Son extends Father{
 
     int son_age;
 
-    Son(int fage, int sage) throws WrongSonAge{
+    Son(int fage, int sage) throws WrongAge, WrongSonAge{
         super(fage);
         if(fage < sage){
             throw new WrongSonAge();
@@ -64,9 +66,25 @@ class Son extends Father{
 class Main{
 
     public static void main(String argv[]){
+        
+        Scanner J = new Scanner(System.in);
+        System.out.println("Enter the father's and son's age : ");
+        int x = J.nextInt();
+        int y = J.nextInt();
 
-        Father f = new Father(-1);
+        try{
+            Father f = new Father(x);
+            Son s = new Son(x, y);
+        }
+        catch(WrongAge wa){
+            System.out.println(wa);
+        }
+        catch(WrongSonAge wsa){
+            System.out.println(wsa);
+        }
+        catch(Exception e){
 
+        }
     }
 
 }
