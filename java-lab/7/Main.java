@@ -66,7 +66,7 @@ class Son extends Father{
 class Main{
 
     public static void main(String argv[]){
-        
+
         Scanner J = new Scanner(System.in);
         System.out.println("Enter the father's and son's age : ");
         int x = J.nextInt();
@@ -81,9 +81,6 @@ class Main{
         }
         catch(WrongSonAge wsa){
             System.out.println(wsa);
-        }
-        catch(Exception e){
-
         }
     }
 
