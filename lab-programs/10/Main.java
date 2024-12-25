@@ -3,32 +3,34 @@ class Q {
 	boolean valueSet = false;
 
 	synchronized int get() {
-		while (!valueSet)
+		while (!valueSet) {
 			try {
-				System.out.println("\nConsumer waiting\n");
+				System.out.println("Consumer waiting");
 				wait();
 			} catch (InterruptedException e) {
 				System.out.println("InterruptedException caught");
 			}
+		}
 		System.out.println("Got: " + n);
 		valueSet = false;
-		System.out.println("\nIntimate Producer\n");
+		System.out.println("Intimate Producer");
 		notify();
 		return n;
 	}
 
 	synchronized void put(int n) {
-		while (valueSet)
+		while (valueSet) {
 			try {
-				System.out.println("\nProducer waiting\n");
+				System.out.println("Producer waiting");
 				wait();
 			} catch (InterruptedException e) {
 				System.out.println("InterruptedException caught");
 			}
+		}
 		this.n = n;
 		valueSet = true;
 		System.out.println("Put: " + n);
-		System.out.println("\nIntimate Consumer\n");
+		System.out.println("Intimate Consumer");
 		notify();
 	}
 }
@@ -43,7 +45,7 @@ class Producer implements Runnable {
 
 	public void run() {
 		int i = 0;
-		while (i < 15) {
+		while (i < 3) {
 			q.put(i++);
 		}
 	}
@@ -59,9 +61,9 @@ class Consumer implements Runnable {
 
 	public void run() {
 		int i = 0;
-		while (i < 15) {
+		while (i < 3) {
 			int r = q.get();
-			System.out.println("consumed:" + r);
+			System.out.println("Consumed: " + r);
 			i++;
 		}
 	}
